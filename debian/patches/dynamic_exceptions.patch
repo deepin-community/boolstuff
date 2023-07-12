@@ -1,0 +1,88 @@
+Index: boolstuff-0.1.16/src/boolstuff/BoolExprParser.h
+===================================================================
+--- boolstuff-0.1.16.orig/src/boolstuff/BoolExprParser.h
++++ boolstuff-0.1.16/src/boolstuff/BoolExprParser.h
+@@ -104,7 +104,7 @@ public:
+         @returns        the root of the created tree
+         @throws Error   describes a parsing error
+     */
+-    BoolExpr<std::string> *parse(const std::string &expr) throw(Error);
++    BoolExpr<std::string> *parse(const std::string &expr);
+ 
+ private:
+ 
+@@ -112,11 +112,11 @@ private:
+     size_t curIndex;
+ 
+     // Implementation methods:
+-    BoolExpr<std::string> *parseExpr() throw(Error);
+-    BoolExpr<std::string> *parseTerm() throw(Error);
+-    BoolExpr<std::string> *parseFactor() throw(Error);
+-    BoolExpr<std::string> *parseAtom() throw(Error);
+-    BoolExpr<std::string> *parseIdentifier() throw(Error);
++    BoolExpr<std::string> *parseExpr();
++    BoolExpr<std::string> *parseTerm();
++    BoolExpr<std::string> *parseFactor();
++    BoolExpr<std::string> *parseAtom();
++    BoolExpr<std::string> *parseIdentifier();
+ 
+     bool atEnd();
+     bool tokenSeen(const char *s);
+Index: boolstuff-0.1.16/src/boolstuff/BoolExprParser.cpp
+===================================================================
+--- boolstuff-0.1.16.orig/src/boolstuff/BoolExprParser.cpp
++++ boolstuff-0.1.16/src/boolstuff/BoolExprParser.cpp
+@@ -62,7 +62,7 @@ BoolExprParser::~BoolExprParser()
+ 
+ 
+ BoolExpr<string> *
+-BoolExprParser::parse(const std::string &expr) throw(Error)
++BoolExprParser::parse(const std::string &expr)
+ {
+     curInput = expr;
+     curIndex = 0;
+@@ -75,7 +75,7 @@ BoolExprParser::parse(const std::string
+ 
+ 
+ BoolExpr<string> *
+-BoolExprParser::parseExpr() throw(Error)
++BoolExprParser::parseExpr()
+ {
+     AutoPtr< BoolExpr<string> > left(parseTerm());
+ 
+@@ -89,7 +89,7 @@ BoolExprParser::parseExpr() throw(Error)
+ 
+ 
+ BoolExpr<string> *
+-BoolExprParser::parseTerm() throw(Error)
++BoolExprParser::parseTerm()
+ {
+     AutoPtr< BoolExpr<string> > left(parseFactor());
+ 
+@@ -103,7 +103,7 @@ BoolExprParser::parseTerm() throw(Error)
+ 
+ 
+ BoolExpr<string> *
+-BoolExprParser::parseFactor() throw(Error)
++BoolExprParser::parseFactor()
+ {
+     bool v = true;
+     while (tokenSeen("!"))
+@@ -121,7 +121,7 @@ BoolExprParser::parseFactor() throw(Erro
+ 
+ 
+ BoolExpr<string> *
+-BoolExprParser::parseAtom() throw(Error)
++BoolExprParser::parseAtom()
+ {
+     skipSpaces();
+     size_t startIndex = curIndex;
+@@ -142,7 +142,7 @@ BoolExprParser::parseAtom() throw(Error)
+ 
+ 
+ BoolExpr<string> *
+-BoolExprParser::parseIdentifier() throw(Error)
++BoolExprParser::parseIdentifier()
+ {
+     skipSpaces();
+     size_t inputLen = curInput.length();

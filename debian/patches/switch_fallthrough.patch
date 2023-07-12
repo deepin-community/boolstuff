@@ -1,0 +1,30 @@
+Index: boolstuff-0.1.16/src/boolstuff/BoolExpr.cpp
+===================================================================
+--- boolstuff-0.1.16.orig/src/boolstuff/BoolExpr.cpp
++++ boolstuff-0.1.16/src/boolstuff/BoolExpr.cpp
+@@ -28,6 +28,16 @@
+ #include <algorithm>
+ #include <stdlib.h>
+ 
++#if (defined(__has_cpp_attribute) && __has_cpp_attribute(fallthrough))
++    #define SWITCH_FALLTHROUGH [[fallthrough]];
++#else
++    #ifdef __GNUC__
++        #define SWITCH_FALLTHROUGH __attribute__ ((fallthrough));
++    #else
++        #define SWITCH_FALLTHROUGH
++    #endif
++#endif
++
+ 
+ // Define this to enable traces that help in leak detection
+ // when used with script leak-detector.pl.
+@@ -448,7 +458,7 @@ static int exprComparator(BoolExpr<T> *a
+         }
+ 
+         /*** NO BREAK ***/
+-
++        SWITCH_FALLTHROUGH
+         case BoolExpr<T>::NOT:
+             return exprComparator(a->getRight(), b->getRight());
+     }

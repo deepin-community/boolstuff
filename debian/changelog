@@ -1,5 +1,86 @@
-template-repository (1.0-1) unstable; urgency=medium
+boolstuff (0.1.16-2) unstable; urgency=medium
 
-  * Initial release
+  * Added two patches. Closes: #984000
+  * Upgraded Standards-Version from 4.1.4 to 4.6.0.1
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Miriam Ruiz <miriam@debian.org>  Sun, 26 Sep 2021 02:31:45 +0200
+
+boolstuff (0.1.16-1) unstable; urgency=medium
+
+  * New upstream release
+  * Upgraded Standards-Version from 3.9.6 to 4.1.4
+
+ -- Miriam Ruiz <miriam@debian.org>  Thu, 24 May 2018 17:27:13 +0200
+
+boolstuff (0.1.15-1) unstable; urgency=medium
+
+  * New upstream release
+  * Upgraded Standards-Version from 3.9.5 to 3.9.6
+
+ -- Miriam Ruiz <miriam@debian.org>  Sun, 02 Aug 2015 21:24:56 +0200
+
+boolstuff (0.1.14-2) unstable; urgency=low
+
+  * Using dh-autoreconf instead of autotools-dev to also fix FTBFS
+    on ppc64el. Thanks to Logan Rosen. Closes: #733082
+  * Upgraded Standards-Version from 3.9.4 to 3.9.5
+
+ -- Miriam Ruiz <miriam@debian.org>  Thu, 09 Jan 2014 01:23:55 +0100
+
+boolstuff (0.1.14-1) unstable; urgency=low
+
+  * New upstream release
+  * Changed my email address to miriam@debian.org
+  * Upgraded Standards-Version from 3.9.3 to 3.9.4
+  * Converted package for multiarch
+  * Updated short descriptions of the packages
+
+ -- Miriam Ruiz <miriam@debian.org>  Sun, 15 Sep 2013 02:42:42 +0200
+
+boolstuff (0.1.13-1) unstable; urgency=low
+
+  * New upstream release
+  * Upgraded source package to DebSrc 3
+  * Upgraded Standards-Version from 3.8.3 to 3.9.3
+  * Added build-arch and build-indep targets to debian/rules
+  * Using dpkg-buildflags to harden builds. Increasing debian/compat to 9
+  * Replaced dh_clean -k by dh_prep in debian/rules
+
+ -- Miriam Ruiz <little_miry@yahoo.es>  Sun, 07 Oct 2012 22:51:58 +0200
+
+boolstuff (0.1.12-3) unstable; urgency=low
+
+  * Really apply patches when building this time. Closes: #467382
+
+ -- Miriam Ruiz <little_miry@yahoo.es>  Sun, 27 Sep 2009 15:26:16 +0200
+
+boolstuff (0.1.12-2) unstable; urgency=low
+
+  * Upgraded Standards-Version from 3.8.0 to 3.8.3
+  * Fixed package descriptions. Close: #467382
+  * Added build dependency: quilt
+  * Added patch so that it compiles in GCC 4.4. Closes: #504848
+  * Added new binary package with the debugging symbols
+  * Changed priority to optional
+
+ -- Miriam Ruiz <little_miry@yahoo.es>  Thu, 24 Sep 2009 13:06:50 +0200
+
+boolstuff (0.1.12-1) unstable; urgency=low
+
+  * New Upstream Release (Closes: #509112)
+  * Upgraded Standards-Version from 3.7.3 to 3.8.0
+  * Added -Wl,-as-needed -Wl,--no-undefined to LDFLAGS
+  * Added dependency from chrpath
+  * Run chrpath --delete on usr/bin/*
+  * Removed DM-Upload-Allowed: yes from debian/control
+
+ -- Miriam Ruiz <little_miry@yahoo.es>  Thu, 18 Dec 2008 23:04:53 +0100
+
+boolstuff (0.1.11-1) unstable; urgency=low
+
+  * Initial release (Closes: #466664)
+  * Note that DM-Upload-Allowed: yes has been added to debian/control to
+    allow Debian Maintainers' uploads.
+
+ -- Miriam Ruiz <little_miry@yahoo.es>  Tue, 19 Feb 2008 18:51:05 +0000
+
